@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <title>ponies</title>
+</head>
+
+<h1><a href="{{ url_for('index') }}">Home</a>
+  &nbsp&nbsp <a href="{{ url_for('add_pony')}}">Add a new pony</a>
+</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth year</th>
+      <th>Breed</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- loop here to create rows -->
+    {% for pony in ponies %}
+    <tr>
+      <td>{{ pony.name}}&nbsp&nbsp</td>
+      <td>{{ pony.birth_year}}</td>
+      <td>{{ pony.breed}}</td>
+      <td>
+        <form method="POST" action="{{ url_for('delete_pony', id=pony.id) }}">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    <!-- loop here to create rows -->
+  </tbody>
+</table>
+
+</html>
